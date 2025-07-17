@@ -1,0 +1,11 @@
+.fullhome{
+        background-image: url("/e2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 60px;
+}
+#carouselExampleAutoplaying{
+    width:100vw;
+    margin-left: calc(-50vw + 50%);
+}
+      
