@@ -1,0 +1,295 @@
+<!-- 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5>Project Employee Records</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped text-center">
+            <thead class="table-secondary">
+              <tr>
+                <th>Emp Project ID</th>
+                <th>Project ID</th>
+                <th>Employee ID</th>
+                <th>Assigned Date</th>
+                <th>Role</th>
+                <th>Is Active</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of employees; let i = index">
+                <td>{{ emp.empProjectId }}</td>
+                <td>{{ emp.projectId }}</td>
+                <td>{{ emp.empId }}</td>
+                <td>{{ emp.assignedDate }}</td>
+                <td>{{ emp.role }}</td>
+                <td>{{ emp.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm me-2" (click)="onEdit(i)">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-3">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5>Project Employee List</h5>
+        </div>
+        <div class="card-body">
+          <form class="mb-4" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="projectId" class="form-label">Project ID</label>
+                <input type="number" class="form-control" id="projectId" [(ngModel)]="projectId" name="projectId" required>
+              </div>
+              <div class="col-md-6">
+                <label for="empId" class="form-label">Employee ID</label>
+                <input type="number" class="form-control" id="empId" [(ngModel)]="empId" name="empId" required>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="assignedDate" class="form-label">Assigned Date</label>
+                <input type="date" class="form-control" id="assignedDate" [(ngModel)]="assignedDate" name="assignedDate" required>
+              </div>
+              <div class="col-md-6">
+                <label for="roleProjectEmployee" class="form-label">Role</label>
+                <input type="text" class="form-control" id="roleProjectEmployee" [(ngModel)]="roleProjectEmployee" name="roleProjectEmployee" required>
+              </div>
+            </div>
+
+           
+
+            <button type="submit" class="btn btn-success mt-3">{{ editIndex !== null ? 'Update' : 'Submit' }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</div> -->
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5>Project Employee List</h5>
+        </div>
+        <div class="card-body">
+          <form class="mb-4" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="projectId" class="form-label">Project ID</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="projectId"
+                  [(ngModel)]="projectId"
+                  name="projectId"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="empname" class="form-label">Employee Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="empname"
+                  [(ngModel)]="empname"
+                  name="empname"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="assignedDate" class="form-label">Assigned Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="assignedDate"
+                  [(ngModel)]="assignedDate"
+                  name="assignedDate"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="roleProjectEmployee" class="form-label">Role</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="roleProjectEmployee"
+                  [(ngModel)]="roleProjectEmployee"
+                  name="roleProjectEmployee"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3">
+              {{ editIndex !== null ? 'Update' : 'Submit' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 mt-3">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5>Project Employee Records</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped text-center">
+            <thead class="table-secondary">
+              <tr>
+                <th>Emp Project ID</th>
+                <th>Project ID</th>
+                <th>Employee Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Assigned Date</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of matchedRecords; let i = index">
+                <td>{{ emp.empProjectId }}</td>
+                <td>{{ emp.projectId }}</td>
+                <td>{{ emp.empname }}</td>
+                <td>{{ emp.contact }}</td>
+                <td>{{ emp.email }}</td>
+                <td>{{ emp.department }}</td>
+                <td>{{ emp.assignedDate }}</td>
+                <td>{{ emp.role }}</td>
+              </tr>
+              <tr *ngIf="matchedRecords.length === 0">
+                <td colspan="8">No records found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+ 
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-warning">
+            <h5>Project Employee List</h5>
+          </div>
+          <div class="card-body">
+            <form class="mb-4" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="client" class="form-label">Client</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="client"
+                    [(ngModel)]="client"
+                    name="client"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="empname" class="form-label">Employee Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="empname"
+                    [(ngModel)]="empname"
+                    name="empname"
+                    required
+                  />
+                </div>
+              </div>
+ 
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label for="assignedDate" class="form-label">Assigned Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="assignedDate"
+                    [(ngModel)]="assignedDate"
+                    name="assignedDate"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="roleProjectEmployee" class="form-label">Role</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="roleProjectEmployee"
+                    [(ngModel)]="roleProjectEmployee"
+                    name="roleProjectEmployee"
+                    required
+                  />
+                </div>
+              </div>
+ 
+              <button type="submit" class="btn btn-success mt-3">
+                {{ editIndex !== null ? 'Update' : 'Submit' }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col-md-12 mt-3">
+        <div class="card">
+          <div class="card-header bg-warning">
+            <h5>Project Employee Records</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-striped text-center">
+              <thead class="table-secondary">
+                <tr>
+                  <th>Emp Project ID</th>
+                  <th>Client</th>
+                  <th>Employee Name</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                  <th>Assigned Date</th>
+                  <th>Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let emp of matchedRecords; let i = index">
+                  <td>{{ emp.empProjectId }}</td>
+                  <td>{{ emp.client }}</td>
+                  <td>{{ emp.empname }}</td>
+                  <td>{{ emp.contact }}</td>
+                  <td>{{ emp.email }}</td>
+                  <td>{{ emp.department }}</td>
+                  <td>{{ emp.assignedDate }}</td>
+                  <td>{{ emp.role }}</td>
+                </tr>
+                <tr *ngIf="matchedRecords.length === 0">
+                  <td colspan="8">No records found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
