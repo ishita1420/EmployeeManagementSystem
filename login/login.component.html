@@ -1,0 +1,46 @@
+
+<div id="login" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    
+    <div style="background-color: #ffffff; border: 2px solid #007bff; padding: 30px; border-radius: 30px; width: 500px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); height:400px">
+      <h1 style="text-align: center; color: #007bff;">LOGIN FORM</h1>
+      <br>
+  
+      <form #myForm="ngForm">
+        <!-- Username -->
+        <div class="form-group mb-3">
+          <label for="username">USERNAME:</label>
+          <input type="text" class="form-control" [(ngModel)]="username" required #c1="ngModel" minlength="6" name="username">
+          <div *ngIf="c1.touched && c1.invalid" class="error" style="color: red;">
+            <span *ngIf="c1.errors?.['required']">*UserName is Required</span>
+            <span *ngIf="c1.errors?.['minlength']">*Minimum length is 6</span>
+          </div>
+        </div>
+  
+        <!-- Password -->
+        <div class="form-group mb-3">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" name="pwd" [(ngModel)]="pwd" required #c2="ngModel" minlength="8">
+          <div *ngIf="c2.touched && c2.invalid" class="error" style="color: red;">
+            <span *ngIf="c2.errors?.['required']">*Password is Required</span>
+            <span *ngIf="c2.errors?.['minlength']">*Minimum length is 8</span>
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div style="text-align: center;">
+          <input type="submit" value="LOGIN" (click)="validate(myForm)" class="btn btn-primary">
+        </div>
+      </form>
+  
+      <!-- Message -->
+       <!--
+      <hr />
+      <h4 *ngIf="msg" [style.color]="error1" style="text-align: center;">{{msg}}</h4>-->
+      <hr />
+        <div *ngIf="msg" class="alert" [ngClass]="{'alert-success': error1 === 'green', 'alert-danger': error1 === 'red'}" role="alert" style="text-align: center;">
+        {{msg}}
+        </div>
+
+    </div>
+  </div>
+  
