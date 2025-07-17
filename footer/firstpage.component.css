@@ -1,0 +1,6 @@
+
+.bg-image {
+  background-image: url('/Media.jfif');
+  background-size: cover;
+  background-position: center;
+}
